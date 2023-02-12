@@ -1,0 +1,29 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+Add blog
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/addblog.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="header">
+    <h3>Add blog</h3>
+    <hr>
+</div>
+<div class="addblog-info">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" class="input-field" name="title" id="title" placeholder="Enter title">
+        <textarea name="desc" class="input-field" id="desc" cols="30" rows="10" placeholder="Enter content"></textarea>
+        <div class="row">
+            <input type="submit" value="Add blog" class=" col-lg-1 btn btn-outline-success">
+            <a href="{% url 'dashboard' %}" class="col-lg-2 btn btn-outline-dark">Dashbaord</a>
+        </div>
+        </form>
+</div>
+{% endblock content %}

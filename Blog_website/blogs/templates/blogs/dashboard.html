@@ -1,0 +1,90 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/dashboard.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="header">
+    <h3>Dashboard</h3>
+    <hr>
+</div>
+<div class="dash-info">
+    <div class="left">
+      <div class="head">
+        <h4 class="alert alert-dark">{{admin_name}}'s Panel</h4>
+        <hr>
+      </div>
+      <div class="left-info">
+        <div class="groups">
+          <h5 class="grp-head">Group Member</h5>
+        </div>
+        <div class="user-actions">
+          <h5 class="grp-head">
+            Actions
+          </h5>
+          <div class="row">
+            <a href="{% url 'addblog' %}" class="btn btn-outline-dark col-lg-5">Add Blog</a>
+            <a href="{% url 'home' %}" class="btn btn-outline-dark col-lg-5">Home</a>
+          </div>
+          <div class="row">
+            <a href="{% url 'contact' %}" class="btn btn-outline-dark col-lg-5">Contact</a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger col-lg-5">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-content">
+        <div class="title">
+          <h4 class="text-center">Blogs</h4>
+          <hr>
+        </div>
+        <div class="content">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" width="8%">Sr No.</th>
+                <th scope="col" width="20%">Title</th>
+                <th scope="col" width="58%">Description</th>
+                <th scope="col" width="20%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if blogs %}
+              {% for blog in blogs %}
+              <tr>
+                <th scope="row">{{blog.id}}</th>
+                <td>{{blog.title}}</td>
+                <td>{{blog.desc}}</td>
+                <td class="actions" >
+                  <a href="{% url 'editblog' blog.id %}" class="btn btn-outline-dark">Edit</a>
+                  {% if perms.blog.delete_post %}
+                  <form action="{% url 'deleteblog' blog.id %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-outline-danger" type="submit" value="Delete">
+                  </form>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="4">
+                  <p class=" text-center alert alert-danger">No Blogs Saved</p>
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+</div>
+{% endblock content %}

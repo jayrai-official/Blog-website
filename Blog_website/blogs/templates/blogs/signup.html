@@ -1,0 +1,36 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+Signup
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/signup.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="signup">
+    <div class="header">
+        <h3>signup page</h3>
+        <hr>
+    </div>
+    <div class="signup-info">
+        <form method="post" novalidate>
+            {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                    {{field.errors|striptags}} <br>
+                {% endfor %}    
+                <input type="submit" class="btn btn-outline-dark" value="Sign up">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/contact.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="header">
+    <h3>Contact me</h3>
+    <hr>
+</div>
+<div class="contact-info">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" id="name" class="input-field" placeholder="Enter name" required>
+        <input type="tel" name="phone_no" id="phone_no" class="input-field" placeholder="Enter Mobile number" required>
+        <textarea name="feedback" id="feed
+        " cols="30" rows="5" class="input-field" placeholder="Enter feedback" required></textarea><br>
+        <input type="submit" value="Submit" class="btn btn-outline-dark">
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}

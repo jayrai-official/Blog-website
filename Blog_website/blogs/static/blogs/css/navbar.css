@@ -1,0 +1,42 @@
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.nav-brand{
+    text-decoration: none;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.nav-brand:hover{
+    color: black;
+}
+
+.nav-link{
+    margin: 0 10px;
+    color: black;
+    font-size: 1.2rem;
+    padding-top: 11px;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer-line{
+    margin-left: 40%;
+}

@@ -1,0 +1,64 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/about.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="about">
+    <div class="heading">
+        <h3>About page</h3>
+        <hr>
+    </div>
+    <div class="about-info">
+       <p class="intro info">
+        <span class="head-line">Hey, I am Jay Rai</span><br><br> A Python Full stack Web developer. I am working with python since 2022 and Now I learned Django to make some front-end web applications. 
+       </p>
+       <p class="skills info">
+        I am pursuing B.C.A from Monark University. Right now I am in 4th semester and my current C.G.P.A is (8.8/10).
+        <br>
+        Mostly I used these Technologies in my Projects...
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Front-end</th>
+                <th scope="col">Back-end</th>
+                <th scope="col">Database</th>
+                <th scope="col">Framework</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>HTML</td>
+                <td>Python</td>
+                <td>MYSQL</td>
+                <td>Django</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td>CSS</td>
+                <td></td>
+                <td>Mongo DB (Basics)</td>
+                <td>React JS</td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2">JS</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+       </p>
+    </div>
+</div>
+{% endblock content %}

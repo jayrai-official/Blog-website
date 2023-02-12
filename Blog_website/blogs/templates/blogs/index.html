@@ -1,0 +1,32 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'blogs/css/style.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="home">
+    <div class="heading">
+        <h3>Blog Posts</h3>
+        <hr>
+    </div>
+    <div class="blogs">
+        {% for blog in posts %}
+        <div class="blog">
+            <h4 class="blog-heading">
+                {{blog.title}}
+            </h4>
+            <p class="blog-content">
+                {{blog.desc}}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
